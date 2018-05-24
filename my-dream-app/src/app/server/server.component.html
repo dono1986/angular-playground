@@ -1,3 +1,7 @@
-<p>Server with Id {{serverId}} is {{serverStatus}}</p>
+<!-- Die Verwendung der Directive entspricht nicht 1:1 einem Property Binding -->
+<!-- Stattdessen binden wir an eine Eigenschaft der ngStyle Directive, die genauso heißt -->
+<p  [ngStyle]="{backgroundColor: getColor() }"
+    [ngClass]="{online: serverStatus === 'online'}"
+>Server with Id {{serverId}} is {{serverStatus}}</p>
 
 
