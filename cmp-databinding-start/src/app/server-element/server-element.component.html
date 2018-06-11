@@ -1,10 +1,15 @@
 <div
   class="panel panel-default">
-  <div class="panel-heading">{{ element.serverName }}</div>
+  <div class="panel-heading">{{ name }}</div>
   <div class="panel-body">
+
+    <!-- Ausgelagert durch ng-content in app.component.html
     <p>
       <strong *ngIf="element.serverType === 'server'" style="color: red">{{ element.serverContent }}</strong>
       <em *ngIf="element.serverType === 'blueprint'">{{ element.serverContent }}</em>
     </p>
+    -->
+
+    <ng-content></ng-content>
   </div>
 </div>

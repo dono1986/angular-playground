@@ -14,5 +14,12 @@ export class AppComponent {
     this.serverElements.push(serverElement);
   }
 
+  onNameChange() {
+    this.serverElements[0].serverName = 'I changed the name LOL';
+  }
+
+  onDestroyFistElement() {
+    this.serverElements.splice(0,1);
+  }
 
 }
