@@ -19,4 +19,15 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit() {
   }
 
+  onIngredientAdd(ingredientElement: Ingredient) {
+    this.ingredients.push(ingredientElement);
+  }
+
+  onIngredientDelete($event: Ingredient) {
+    // ... TODO
+  }
+
+  onIngredientListClear() {
+    // this.ingredients.slice(0, this.ingredients.length - 1);
+  }
 }
