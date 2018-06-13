@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-even',
@@ -9,9 +9,15 @@ export class EvenComponent implements OnInit {
 
   @Input() evenNumber: number;
 
+  name: string;
+
   constructor() { }
 
   ngOnInit() {
+
+    setInterval( () => {this.name;} , 1000 );
+    this.name = 'blubb';
+
   }
 
 }
