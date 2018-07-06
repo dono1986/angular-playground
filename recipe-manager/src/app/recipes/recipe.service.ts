@@ -13,7 +13,7 @@ export class RecipeService {
 
   // all recipes
   private recipes: Recipe[] = [
-    new Recipe(
+    new Recipe(1,
       'Test Recipe',
       'Easy test',
       'https://static01.nyt.com/images/2015/08/14/dining/14ROASTEDSALMON/14ROASTEDSALMON-articleLarge.jpg',
@@ -22,7 +22,7 @@ export class RecipeService {
         new Ingredient('French Fries', 20)
       ]
     ),
-    new Recipe(
+    new Recipe(2,
       'Test Recipe 2',
       'Easy test 2',
       'https://static01.nyt.com/images/2015/08/14/dining/14ROASTEDSALMON/14ROASTEDSALMON-articleLarge.jpg',
@@ -30,7 +30,17 @@ export class RecipeService {
         new Ingredient('Buns', 2),
         new Ingredient('Meat', 1)
       ]
-    )]
+    )];
+
+  /* ES GEHT AUCH OHNE ID IM RECIPE-OBJEKT
+  getRecipe(id: number) {
+    return this.recipes.find((item) => item.id === id);
+  }*/
+
+  getRecipe(index: number) {
+    return this.recipes[index];
+  }
+
 
   getRecipes() {
     return this.recipes.slice();
