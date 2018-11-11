@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { findReadVarNames } from '@angular/compiler/src/output/output_ast';
+import { NgForm } from '@angular/forms';
+import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +9,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  
+  @ViewChild("f") myForm: NgForm;
+
   suggestUserName() {
     const suggestedName = 'Superuser';
   }
+
+  onSubmit() {
+
+    console.log(this.myForm);
+    console.log(this.myForm.value.email);
+    console.log(this.myForm.value.secret);
+    console.log(this.myForm.value.username);
+  }
+
+  /*onSubmit(form: NgForm) {
+    
+    console.log(form.value.email);
+    console.log(form.value.secret);
+    console.log(form.value.username);
+  }*/
 }
