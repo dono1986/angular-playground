@@ -10,7 +10,7 @@ export class StudentsService {
 
     constructor() {}
 
-    studentsListChanged: Subject<Student[]>;
+    public studentsListChanged: Subject<Student[]> = new Subject<Student[]>();
 
     getStudents() {
         return this.students.slice();
@@ -21,6 +21,7 @@ export class StudentsService {
     }
 
     addStudent(student: Student) {
+        console.log('addStudent:' + student);
         this.students.push(student);
         this.studentsListChanged.next(this.students.slice());
     }

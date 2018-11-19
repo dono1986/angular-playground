@@ -1,6 +1,7 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, OnDestroy } from '@angular/core';
 import { Student } from '../student.model';
 import { StudentsService } from '../students.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-students-list',
@@ -9,16 +10,38 @@ import { StudentsService } from '../students.service';
 })
 
 @Injectable()
-export class StudentsListComponent implements OnInit {
+export class StudentsListComponent implements OnInit, OnDestroy {
 
   students: Student[];
 
-  constructor(public studService: StudentsService) { }
+  selectedStudent: Student;
+
+  studentSubscription: Subscription;
+
+  constructor(public studService: StudentsService) {
+
+  }
 
   ngOnInit() {
 
-    this.students = this.studService.getStudents();
+    this.studentSubscription = this.studService.studentsListChanged.subscribe((students) => {
+      console.log('Students changed');
+      this.students = students;
+    });
 
+    this.students = this.studService.getStudents();
   }
+
+  ngOnDestroy() {
+      this.studentSubscription.unsubscribe();
+  }
+
+  onStudentSelected(event: Student) {
+    console.log(event);
+    this.selectedStudent = event;
+  }
+
+
+
 
 }

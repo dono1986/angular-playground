@@ -11,6 +11,7 @@ import { StudentsListComponent } from './students/students-list/students-list.co
 import { StudentsEditComponent } from './students/students-edit/students-edit.component';
 import { StudentsListItemComponent } from './students/students-list/students-list-item/students-list-item.component';
 import { StudentsService } from './students/students.service';
+import { FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { StudentsService } from './students/students.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [StudentsService],
   bootstrap: [AppComponent]

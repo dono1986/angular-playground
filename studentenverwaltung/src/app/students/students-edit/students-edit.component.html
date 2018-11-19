@@ -1,3 +1,16 @@
-<p>
-  students-edit works!
-</p>
+<form #f="ngForm">
+  <label for="firstname">First name:
+    <input id="firstname" name="firstname" type="text" [ngModel]="student.firstname">
+  </label>
+
+  <label for="lastname">Last name:
+    <input id="lastname" name="lastname" type="text" [ngModel]="student.lastname">
+  </label>
+
+  <label for="registrationNumber">First name:
+    <input id="registrationNumber" name="registrationNumber" type="text" [ngModel]="student.registrationNumber">
+  </label>
+
+  <button class="btn btn-success" (click)="save()">Save</button>
+
+</form>
