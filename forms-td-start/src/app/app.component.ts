@@ -10,10 +10,14 @@ import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_di
 })
 export class AppComponent {
   
-  @ViewChild("f") myForm: NgForm;
+  @ViewChild('f') myForm: NgForm;
 
   suggestUserName() {
     const suggestedName = 'Superuser';
+
+    // setzt alle
+    this.myForm.setValue( { username: this.suggestUserName, email: 'test@test.de', secret: 'pet' });
+    this.myForm.form.patchValue( { username: this.suggestUserName });
   }
 
   onSubmit() {
