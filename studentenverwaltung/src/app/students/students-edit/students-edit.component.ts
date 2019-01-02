@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, ViewChild, Injectable } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild, Injectable, EventEmitter } from '@angular/core';
 import { Student } from '../student.model';
 import { NgForm } from '@angular/forms';
 import { StudentsService } from '../students.service';
-
 
 @Component({
   selector: 'app-students-edit',
@@ -15,6 +14,8 @@ export class StudentsEditComponent implements OnInit {
   @Input() student: Student;
   @ViewChild('f') form: NgForm;
 
+  @Output() deleteRequested = new EventEmitter<Student>();
+
   constructor(public studentsService: StudentsService) { }
 
   save() {
@@ -26,6 +27,10 @@ export class StudentsEditComponent implements OnInit {
       this.student.lastname = this.form.value.lastname;
       this.student.registrationNumber = this.form.value.registrationNumber;
     }*/
+  }
+
+  delete() {
+    this.deleteRequested.emit();
   }
 
   ngOnInit() {

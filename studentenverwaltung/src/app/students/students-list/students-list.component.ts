@@ -41,6 +41,10 @@ export class StudentsListComponent implements OnInit, OnDestroy {
     this.selectedStudent = event;
   }
 
+  onDeleteRequested() {
+    this.studService.removeStudent(this.selectedStudent);
+    this.selectedStudent = null; 
+  }
 
 
 

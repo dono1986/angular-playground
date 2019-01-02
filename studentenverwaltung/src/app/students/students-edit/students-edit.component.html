@@ -2,15 +2,21 @@
   <label for="firstname">First name:
     <input id="firstname" name="firstname" type="text" [ngModel]="student.firstname">
   </label>
+  <br/>
 
   <label for="lastname">Last name:
     <input id="lastname" name="lastname" type="text" [ngModel]="student.lastname">
   </label>
+  <br/>
 
-  <label for="registrationNumber">First name:
+  <label for="registrationNumber">Registration number:
     <input id="registrationNumber" name="registrationNumber" type="text" [ngModel]="student.registrationNumber">
   </label>
+  <br/>
 
-  <button class="btn btn-success" (click)="save()">Save</button>
+  <div class="btn-group">
+    <button class="btn btn-success" (click)="save()">Save</button>
 
+    <button class="btn btn-warning" (click)="delete()">Delete</button>
+  </div>
 </form>

@@ -1,22 +1,31 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form [(formGroup)]="myForm" (ngSubmit)="submitted()">
-        <div class="form-group">
-          <label for="username">Username</label>
+      <form [formGroup]="myForm" (ngSubmit)="submitted()">
+        <div formGroupName="userData">
+          <label for="username">
+          Username
           <input
             type="text"
             id="username"
             formControlName="username"
             class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="email">email</label>
-          <input
-            type="text"
-            id="email"
-            formControlName="email"
-            class="form-control">
+          </label>
+
+          <p class="help-block" *ngIf="!myForm.get('userData.username').valid && myForm.get('userData.username').touched">
+            Please enter a valid username!
+          </p>
+
+          <label for="email">
+            Email
+            <input
+              type="text"
+              id="email"
+              formControlName="email"
+              class="form-control"
+              >
+              
+          </label>
         </div>
         <div class="radio" *ngFor="let gender of genders">
           <label>
@@ -26,7 +35,18 @@
               [value]="gender">{{ gender }}
           </label>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+
+        <div formArrayName="hobbies">
+          <h4>Your Hobbies</h4>
+          <button class="btn btn-default" type="button" (click)="onAddHobby()">Add Hobby</button>
+
+          <div class="form-group" *ngFor="let hobby of myForm.get('hobbies').controls; let i = index">
+            <input type="text" class="form-control" [formControlName]="i" />
+          </div>
+
+        </div>
+
+        <button class="btn btn-primary" [disabled]="!myForm.valid" type="submit">Submit</button>
       </form>
     </div>
   </div>

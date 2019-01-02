@@ -1,4 +1,6 @@
 
+<app-students-new ></app-students-new>
+
 <app-students-list-item *ngFor="let student of students" [student]="student" (studentSelected)="onStudentSelected($event)"></app-students-list-item>
 
-<app-students-edit *ngIf="selectedStudent" [student]="selectedStudent"></app-students-edit>
+<app-students-edit *ngIf="selectedStudent" [student]="selectedStudent" (deleteRequested)="onDeleteRequested()"></app-students-edit>

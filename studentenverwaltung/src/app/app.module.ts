@@ -12,6 +12,7 @@ import { StudentsEditComponent } from './students/students-edit/students-edit.co
 import { StudentsListItemComponent } from './students/students-list/students-list-item/students-list-item.component';
 import { StudentsService } from './students/students.service';
 import { FormsModule} from '@angular/forms';
+import { StudentsNewComponent } from './students/students-new/students-new.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FormsModule} from '@angular/forms';
     StudentsDetailComponent,
     StudentsListComponent,
     StudentsEditComponent,
-    StudentsListItemComponent
+    StudentsListItemComponent,
+    StudentsNewComponent
   ],
   imports: [
     BrowserModule,

@@ -27,11 +27,13 @@ export class StudentsService {
     }
 
     removeStudent(student: Student) {
-        this.students.filter((value, index, students) => {
-            return student !== value;
-        });
-        this.studentsListChanged.next(this.students.slice());
+        this.students = this.students.filter((value, index, students) => {
 
+            return student.getId() !== value.getId();
+        });
+        console.log(this.students);
+        this.studentsListChanged.next(this.students.slice());
+        
     }
 
 

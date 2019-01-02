@@ -1,0 +1,38 @@
+<form #f="ngForm">
+  <label for="firstname">First name:
+    <input id="firstname" name="firstname" type="text" ngModel="{{defaultFirstname}}" required>
+  </label>
+  <br/>
+
+  <label for="lastname">Last name:
+    <input id="lastname" name="lastname" type="text" [ngModel]="defaultLastname" required>
+  </label>
+  <br/>
+
+  <label for="registrationNumber">Registration number:
+    <input id="registrationNumber" name="registrationNumber" type="text" [ngModel]="defaultRegistrationNumber" required>
+  </label>
+  <br/>
+
+  <div>
+    <label>
+    <input type="radio" name="myRadio" value="special1" ngModel required/>
+    Special
+    </label>
+
+    <label>
+      <input type="radio" name="myRadio" value="special2" ngModel required/>
+      Special 2
+      </label>
+  </div>
+
+  <p>{{defaultFirstname}}</p>
+  <p>{{defaultRegistrationNumber}}</p>
+
+  <button class="btn btn-success" [disabled]="!f.valid" (click)="save()">Save</button>
+
+  <button class="btn btn-warning" (click)="f.reset()">Reset</button>
+
+  <button class="btn btn-warning" (click)="test()">Test</button>
+</form>
+
