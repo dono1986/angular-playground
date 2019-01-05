@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <input type="text" [(ngModel)]="filteredStatus"/>
+      <hr />
+
+      <p>App Status: {{appStatus | async}}</p>
+
+      <p>Current value: {{valueSubject | async}}</p>
+
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let server of servers | filter:filteredStatus:'status'"
+          [ngClass]="getStatusClasses(server)">
+          <span
+            class="badge">
+            {{ server.status }}
+          </span>
+          <strong>{{ server.name | shorten:10 }}</strong> | 
+          {{ server.instanceType | titlecase }} | 
+          {{ server.started | date:'dd.MM.yyyy':'UTC+1':'de_DE' }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

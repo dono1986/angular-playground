@@ -14,14 +14,25 @@ export class ShoppingListService {
   // @Output() listChanged = new EventEmitter();
   listChanged = new Subject<Ingredient[]>();
 
+  startedEditing = new Subject<number>();
+
   constructor() { }
 
   getIngredients() {
     return this.ingredients.slice();
   }
 
+  getIngredient(index: number) {
+    return this.ingredients[index];
+  }
+
   add(ingredientElement: Ingredient) {
     this.ingredients.push(ingredientElement);
+    this.listChanged.next(this.ingredients.slice());
+  }
+
+  update(index: number, ingredient: Ingredient) {
+    this.ingredients[index] = ingredient;
     this.listChanged.next(this.ingredients.slice());
   }
 
@@ -33,12 +44,19 @@ export class ShoppingListService {
     this.listChanged.next(this.ingredients.slice());
   }
 
-  delete($event: Ingredient) {
-    // ... TODO
+  delete(index: number) {
+    console.log('Before:' + this.ingredients);
+    this.ingredients.splice(index, 1);
+    console.log('After:' + this.ingredients);
+    this.listChanged.next(this.ingredients.slice());
+
   }
 
   listClear() {
-    // this.ingredients.slice(0, this.ingredients.length - 1);
+    console.log('Clearing ingredients list');
+     this.ingredients = []; // this.ingredients.slice(0, this.ingredients.length - 1);
+     this.listChanged.next(this.ingredients.slice());
+
   }
 
 }
