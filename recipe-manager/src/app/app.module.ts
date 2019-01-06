@@ -1,3 +1,4 @@
+import { LoggingInterceptor } from './shared/logging.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -18,6 +19,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeService} from './recipes/recipe.service';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { DataStorageService } from './shared/data-storage.service';
 
 @NgModule({
   declarations: [
@@ -36,9 +40,12 @@ import { RecipeService} from './recipes/recipe.service';
     RecipeEditComponent
     ],
   imports: [
-    BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule
+    BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpModule, HttpClientModule
   ],
-  providers: [ShoppingListService, RecipeService],
+  providers: [ShoppingListService,
+              RecipeService,
+              DataStorageService,
+              {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

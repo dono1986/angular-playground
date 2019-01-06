@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ServerService } from './servers.service';
 import {Observable} from 'rxjs';
+import {Response} from '@angular/http';
 
 
 @Component({
@@ -9,28 +10,26 @@ import {Observable} from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
   constructor(private service: ServerService) {
 
   }
-  
-  servers = [
-    {
-      name: 'Testserver',
-      capacity: 10,
-      id: this.generateId()
-    },
-    {
-      name: 'Liveserver',
-      capacity: 100,
-      id: this.generateId()
-    }
-  ];
+
+  serversAsync = this.service.getServersTransformed();
+
+  servers = [];
 
   onSave() {
     this.service.storeServers(this.servers).subscribe((res) => {
       console.log(res);
     }, (error) => { console.log(error);
+    });
+  }
+
+  onGetServers() {
+    this.service.getServersTransformed().subscribe((data: any[]) => {
+        this.servers = data;
+    }, (error) => {
+      console.log(error);
     });
   }
 
