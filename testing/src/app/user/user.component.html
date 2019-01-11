@@ -1,0 +1,17 @@
+<div *ngIf="isLoggedIn">
+  <h1>User Logged In</h1>
+  <p>User is: {{ user.name }}</p>
+</div>
+
+<div *ngIf="!isLoggedIn">
+    <h1>User Not Logged In</h1>
+    <p>Please log in first</p>
+</div>
+
+<button type="button" (click)="logInOrOff()"><ng-container *ngIf="!isLoggedIn; else elseTemplate">
+  Login
+</ng-container>
+<ng-template #elseTemplate>
+  Logoff
+</ng-template>
+</button>
