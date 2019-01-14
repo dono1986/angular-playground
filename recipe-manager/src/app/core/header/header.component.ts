@@ -1,8 +1,6 @@
 import { HttpEvent, HttpEventType } from '@angular/common/http';
-import { DataStorageService } from './../shared/data-storage.service';
+import { DataStorageService } from './../../shared/data-storage.service';
 import {Component, OnInit} from '@angular/core';
-import { RecipeService } from '../recipes/recipe.service';
-import { Observable } from 'rxjs';
 import {Response} from '@angular/http';
 
 

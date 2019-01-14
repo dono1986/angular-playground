@@ -1,9 +1,9 @@
 import {Http, Response} from '@angular/http';
-import {HttpClient, HttpEvent, HttpHeaders, HttpRequest} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
 
-import { throwError, Observable } from 'rxjs';
+import { throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { catchError, map, first } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Recipe } from '../recipes/recipe.model';
 import { RecipeService } from '../recipes/recipe.service';
 

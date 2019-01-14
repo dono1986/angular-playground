@@ -7,10 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-
-  activeLink = 'recipe';
-
-  onLinkClicked(linkClicked: string) {
-    this.activeLink = linkClicked;
-  }
 }
